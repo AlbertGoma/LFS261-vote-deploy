@@ -15,6 +15,7 @@ node {
           sh "git config user.email 58812649+AlbertGoma@users.noreply.github.com"
           sh "git config user.name AlbertGoma"
           sh "git switch main"
+          sh "git pull"
           sh "cat vote-ui-deployment.yaml"
           sh "sed -i 's+albertgoma/vote.*+albertgoma/vote:${DOCKERTAG}+g' vote-ui-deployment.yaml"
           sh "cat vote-ui-deployment.yaml"
