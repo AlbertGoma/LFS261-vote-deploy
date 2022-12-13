@@ -16,7 +16,6 @@ node {
           sh "git config user.name AlbertGoma"
           sh "git config pull.rebase false"
           sh "git switch main"
-          sh "git pull"
           sh "cat vote-ui-deployment.yaml"
           sh "sed -i 's+albertgoma/vote.*+albertgoma/vote:${DOCKERTAG}+g' vote-ui-deployment.yaml"
           sh "cat vote-ui-deployment.yaml"
