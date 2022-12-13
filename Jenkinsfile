@@ -10,10 +10,11 @@ node {
   stage('Update GIT') {
     script {
       catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-        withCredentials([usernamePassword(credentialsId: 'AlbertGoma-github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+        withCredentials([usernamePassword(credentialsId: 'myAccessToken', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
           //def encodedPassword = URLEncoder.encode("$GIT_PASSWORD",'UTF-8')
           sh "git config user.email 58812649+AlbertGoma@users.noreply.github.com"
           sh "git config user.name AlbertGoma"
+          sh "git config pull.rebase false"
           sh "git switch main"
           sh "git pull"
           sh "cat vote-ui-deployment.yaml"
